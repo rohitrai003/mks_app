@@ -172,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context) => CreateDocScreen(
                     appbartitle: "Create Document",
                     t: null,
+                    customTitle: true,
                   ),
                 ));
           },

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:open_file/open_file.dart';
@@ -10,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 final pw.Document pdf = pw.Document();
 
 Future<void> createPDF(String title, String date, String body,
-    String personName, String personDesignation) async {
+    String personName, String personDesignation, bool addCopyTo) async {
   final logoImage = pw.MemoryImage(
       (await rootBundle.load("assets/letter_head.jpg")).buffer.asUint8List());
   pdf.addPage(
@@ -58,7 +59,7 @@ Future<void> createPDF(String title, String date, String body,
               height: 30,
             ),
             pw.Text(
-              "Thank You all",
+              "Thank You, Jai Kirat",
               style: pw.TextStyle(
                 fontSize: 13,
                 font: pw.Font.times(),
@@ -74,10 +75,49 @@ Future<void> createPDF(String title, String date, String body,
                   pw.Align(
                     alignment: pw.Alignment.centerLeft,
                     child: pw.Container(
-                      child: pw.Column(
-                        children: [],
-                      ),
-                    ),
+                        child: addCopyTo == true
+                            ? pw.Column(
+                                mainAxisAlignment: pw.MainAxisAlignment.start,
+                                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                children: [
+                                  pw.Text(
+                                    "Copy To:",
+                                    style: pw.TextStyle(
+                                      font: pw.Font.times(),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  pw.Text(
+                                    "1) President for kind information",
+                                    style: pw.TextStyle(
+                                      font: pw.Font.times(),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  pw.Text(
+                                    "2) Office file for record",
+                                    style: pw.TextStyle(
+                                      font: pw.Font.times(),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  pw.Text(
+                                    "3) Person concern",
+                                    style: pw.TextStyle(
+                                      font: pw.Font.times(),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  pw.Text(
+                                    "4) Social media for information",
+                                    style: pw.TextStyle(
+                                      font: pw.Font.times(),
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : pw.Container()),
                   ),
                   pw.Expanded(child: pw.Container()),
                   pw.Align(

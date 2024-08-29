@@ -5,25 +5,46 @@ import 'package:mks_app/src/controller/createPdf.dart';
 import 'package:mks_app/src/widgets/customTextInput.dart';
 
 // ignore: must_be_immutable
-class CreateDocScreen extends StatelessWidget {
+class CreateDocScreen extends StatefulWidget {
   final String? t;
+  final bool customTitle;
   final String appbartitle;
-  CreateDocScreen({super.key, required this.t, required this.appbartitle});
+  CreateDocScreen(
+      {super.key,
+      required this.t,
+      required this.appbartitle,
+      required this.customTitle});
 
-  late TextEditingController title;
+  @override
+  State<CreateDocScreen> createState() => _CreateDocScreenState();
+}
+
+class _CreateDocScreenState extends State<CreateDocScreen> {
+  TextEditingController title = TextEditingController();
   TextEditingController date = TextEditingController();
   TextEditingController body = TextEditingController();
+  TextEditingController copyTo = TextEditingController();
   TextEditingController issuedPersonName = TextEditingController();
   TextEditingController issuedPersonDesignation = TextEditingController();
 
+  bool addCopyTo = false;
+  List<Widget> items = [
+    CustomTextInput(
+        hintText: "Eg: President MKS for kind version",
+        title: "",
+        controller: TextEditingController(),
+        isDate: false,
+        isBody: true,
+        textInputType: TextInputType.text),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    title = TextEditingController(text: t);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: green,
         title: Text(
-          appbartitle,
+          widget.appbartitle,
           style: primaryStyle,
         ),
       ),
@@ -36,7 +57,7 @@ class CreateDocScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              title.text.isEmpty
+              widget.customTitle == true
                   ? CustomTextInput(
                       hintText:
                           "Write Your Heading eg Application, Condolence,etc",
@@ -62,6 +83,26 @@ class CreateDocScreen extends StatelessWidget {
                 textInputType: TextInputType.multiline,
                 isDate: false,
                 isBody: true,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Add Copy to : ",
+                    style: secondaryStyle,
+                  ),
+                  Checkbox(
+                    value: addCopyTo,
+                    onChanged: (value) {
+                      setState(() {
+                        addCopyTo = !addCopyTo;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,12 +171,21 @@ class CreateDocScreen extends StatelessWidget {
               Center(
                   child: ElevatedButton(
                       onPressed: () {
-                        createPDF(
-                            title.text,
-                            date.text,
-                            body.text,
-                            issuedPersonName.text,
-                            issuedPersonDesignation.text);
+                        widget.customTitle == true
+                            ? createPDF(
+                                title.text,
+                                date.text,
+                                body.text,
+                                issuedPersonName.text,
+                                issuedPersonDesignation.text,
+                                addCopyTo)
+                            : createPDF(
+                                widget.appbartitle,
+                                date.text,
+                                body.text,
+                                issuedPersonName.text,
+                                issuedPersonDesignation.text,
+                                addCopyTo);
                       },
                       style: ElevatedButton.styleFrom(
                           fixedSize:

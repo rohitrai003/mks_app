@@ -11,6 +11,7 @@ customOptionButton(String icon, String title, BuildContext context) {
             builder: (context) => CreateDocScreen(
               appbartitle: title,
               t: title,
+              customTitle: false,
             ),
           ));
     },

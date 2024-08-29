@@ -53,6 +53,7 @@ class _CustomTextInputState extends State<CustomTextInput> {
           maxLines: widget.isBody == false ? 1 : 8,
           controller: widget.controller,
           keyboardType: widget.textInputType,
+          style: secondaryStyle,
           // textInputAction: widget.isBody == false
           //     ? TextInputAction.done
           //     : TextInputAction.newline,
