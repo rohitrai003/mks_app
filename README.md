@@ -1,4 +1,4 @@
-# Auto-Generated Application Builder
+# MKS App
 
 A **Flutter** project that allows users to create customized applications by providing inputs such as title, body, date, and more. The app takes user input and auto-generates a functional application with the given details, streamlining app creation for quick prototypes or personal use.
 
@@ -12,17 +12,6 @@ A **Flutter** project that allows users to create customized applications by pro
 - **Customization Options**: Add or modify attributes dynamically.
 
 ---
-
-## Screenshots
-
-### Input Screen
-![Input Screen](assets/screenshots/input_screen.png)
-
-### Generated Application
-![Generated Application](assets/screenshots/generated_app.png)
-
----
-
 ## Getting Started
 
 ### Prerequisites
