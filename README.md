@@ -32,4 +32,4 @@ A **Flutter** project that allows users to create customized applications by pro
 ### Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/mks_app/mks_app.git
+   git clone https://github.com/rohitrai003/mks_app.git
