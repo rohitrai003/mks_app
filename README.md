@@ -1,16 +1,35 @@
-# mks_app
+# Auto-Generated Application Builder
 
-A new Flutter project.
+A **Flutter** project that allows users to create customized applications by providing inputs such as title, body, date, and more. The app takes user input and auto-generates a functional application with the given details, streamlining app creation for quick prototypes or personal use.
+
+---
+
+## Features
+
+- **Dynamic Application Generation**: Users can provide inputs like title, body, and date, and the app generates an application structure accordingly.
+- **User-Friendly Interface**: Intuitive input fields for easy customization.
+- **Preview Mode**: View the generated application before finalizing.
+- **Customization Options**: Add or modify attributes dynamically.
+
+---
+
+## Screenshots
+
+### Input Screen
+![Input Screen](assets/screenshots/input_screen.png)
+
+### Generated Application
+![Generated Application](assets/screenshots/generated_app.png)
+
+---
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- **Flutter SDK**: [Install Flutter](https://flutter.dev/docs/get-started/install)
+- A code editor like **VS Code** or **Android Studio**.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/mks_app/mks_app.git
